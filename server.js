@@ -73,33 +73,46 @@ app.get("/", (req, res) => {
 
 
 app.get("/usuarios", (req, res) => {
-    const { filtro, valor } = req.query;
+  const { filtro, valor } = req.query;
 
-    let query = "SELECT id, nombre, dpi, correo FROM usuarios";
-    let params = [];
+  let query = "SELECT id, nombre, dpi, correo FROM usuarios";
+  let params = [];
 
-    if (filtro && valor) {
-        query += ` WHERE ${conexion.escapeId(filtro)} LIKE ?`;
-        params.push(`%${valor}%`);
+  if (filtro && valor) {
+    query += ` WHERE ${conexion.escapeId(filtro)} LIKE ?`;
+    params.push(`%${valor}%`);
+  }
+
+  conexion.query(query, params, (err, resultado) => {
+    if (err) {
+      console.error("Error en la consulta:", err.message);
+      return res.status(500).send("Error al obtener los usuarios");
     }
 
-    conexion.query(query, params, (err, resultado) => {
-        if (err) {
-            console.error("Error en la consulta:", err.message);
-            return res.status(500).send("Error al obtener los usuarios");
-        }
+    let tablaHtml = "";
 
-        const tablaHtml = `<div class="table-container">${jsonA_tabla(resultado)}</div>`;
+    if (resultado.length === 0) {
+      // ✅ Si no hay resultados
+      tablaHtml = `
+        <div class="table-container">
+          <p style="color: red; font-weight: bold;">No se encontraron usuarios con ese criterio de búsqueda.</p>
+        </div>
+      `;
+    } else {
+      // ✅ Si hay resultados
+      tablaHtml = `<div class="table-container">${jsonA_tabla(resultado)}</div>`;
+    }
 
-        fs.readFile(path.join('public', 'verUsuario.html'), "utf8", (err, data) => {
-            if (err) {
-                return res.status(500).send("Error al cargar la vista");
-            }
+    // Cargar HTML y reemplazar {{TABLAFINAL}}
+    fs.readFile(path.join('public', 'verUsuario.html'), "utf8", (err, data) => {
+      if (err) {
+        return res.status(500).send("Error al cargar la vista");
+      }
 
-            const pagina_data = data.replace("{{TABLAFINAL}}", tablaHtml);
-            res.send(pagina_data);
-        });
+      const pagina_data = data.replace("{{TABLAFINAL}}", tablaHtml);
+      res.send(pagina_data);
     });
+  });
 });
 
 
