@@ -1,0 +1,30 @@
+{
+  "name": "mini-proyecto",
+  "version": "1.0.0",
+  "type":"module",
+  "description": "creacion de servidor",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juliogodoy1012-python/mini-proyecto.git"
+  },
+  "keywords": [
+    "servidor",
+    "node",
+    "js"
+  ],
+  "author": "Julio Godoy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/juliogodoy1012-python/mini-proyecto/issues"
+  },
+  "homepage": "https://github.com/juliogodoy1012-python/mini-proyecto#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
