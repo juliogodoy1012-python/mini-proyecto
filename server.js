@@ -92,14 +92,12 @@ app.get("/usuarios", (req, res) => {
     let tablaHtml = "";
 
     if (resultado.length === 0) {
-      // ✅ Si no hay resultados
       tablaHtml = `
         <div class="table-container">
           <p style="color: red; font-weight: bold;">No se encontraron usuarios con ese criterio de búsqueda.</p>
         </div>
       `;
     } else {
-      // ✅ Si hay resultados
       tablaHtml = `<div class="table-container">${jsonA_tabla(resultado)}</div>`;
     }
 
