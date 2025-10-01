@@ -1,36 +1,59 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Dev-oradores</title>
-  <link rel="stylesheet" href="estilo.css">
-</head>
-<body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="nuevoUsuario.html">Crear usuarios</a>
-    <a href="verUsuario.html">Usuarios</a>
-  </nav>
+    <head>
+        <meta charset="UTF-8">
+        <title>Dev-Oradores</title>
+        <link rel="stylesheet" href="estilo.css">        
+    </head>
+    <body>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="nuevoUsuario.html">Crear usuarios</a>
+            <a href="verUsuario.html">Usuarios</a>
+        </nav>
+        
+        <h2 class="titulo"> Ver</h2>
+    <!-- Selección del tipo de búsqueda -->
+    <label for="tipoBusqueda">Buscar por:</label>
+    <select id="tipoBusqueda" name="tipoBusqueda">
+      <option value="nombre">Nombre</option>
+      <option value="email">Correo</option>
+      <option value="dni">DPI</option>
+    </select>
 
-  <h2 class="titulo">Ver</h2>
-
-  <form action="verUsuario.html" method="get">
-    <label for="nombre">Nombre</label>
-    <input id="nombre" name="nombre" type="text" placeholder="Ej: escriba su nombre">
+    <!-- Campo de búsqueda dinámico -->
+    <label for="busqueda"></label>
+    <input type="text" id="busqueda" name="busqueda" placeholder="Escriba nombre">
     <br><br>
 
-    <label for="email">Email</label>
-    <input id="email" name="email" type="email" placeholder="ejemplo@correo.com">
-    <br><br>
-
-    <label for="dni">DNI</label>
-    <input id="dni" name="dni" type="text" placeholder="Ej: 12345678">
-    <br><br>
-
-    <button type="reset">Limpiar</button>
-    <button type="submit">Entrar</button>
+    <button type="submit">Buscar</button>
   </form>
 
 
-</body>
+
+
+
+
+
+    </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </html>

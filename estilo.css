@@ -7,7 +7,7 @@ body {
 }
 
 nav {
-  background-color: #007BFF;
+  background-color: #11467e;
   padding: 10px;
   text-align: center;
 }
@@ -61,11 +61,11 @@ button {
 }
 
 button[type="submit"] {
-  background-color: #007BFF;
-  color: white;
+  background-color: #093f79;
+  color: rgb(255, 255, 255);
 }
 
 button[type="reset"] {
-  background-color: #ccc;
-  color: #333;
+  background-color: #093f79;
+  color: #ffffff;
 }
