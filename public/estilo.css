@@ -69,3 +69,17 @@ button[type="reset"] {
   background-color: #093f79;
   color: #ffffff;
 }
+
+/* Agrupacion horizontal del select y el input */
+.grupo-busqueda {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Opcional: que no usen 100% del ancho, porque están uno al lado del otro */
+.grupo-busqueda select,
+.grupo-busqueda input {
+  flex: 1;
+  width: auto;
+}

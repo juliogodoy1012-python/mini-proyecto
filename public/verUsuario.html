@@ -1,59 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <title>Dev-Oradores</title>
-        <link rel="stylesheet" href="estilo.css">        
-    </head>
-    <body>
-        <nav>
-            <a href="index.html">Inicio</a>
-            <a href="nuevoUsuario.html">Crear usuarios</a>
-            <a href="verUsuario.html">Usuarios</a>
-        </nav>
-        
-        <h2 class="titulo"> Ver</h2>
-    <!-- Selección del tipo de búsqueda -->
-    <label for="tipoBusqueda">Buscar por:</label>
+<head>
+  <meta charset="UTF-8">
+  <title>Dev-Oradores</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="nuevoUsuario.html">Crear usuarios</a>
+    <a href="verUsuario.html">Usuarios</a>
+  </nav>
+
+  <h2 class="titulo">Ver</h2>
+
+<form id="formBusqueda" action="verUsuario.html" method="get">
+
+  <div class="grupo-busqueda">
+    <label for="tipoBusqueda">Buscar por</label>
     <select id="tipoBusqueda" name="tipoBusqueda">
       <option value="nombre">Nombre</option>
       <option value="email">Correo</option>
       <option value="dni">DPI</option>
     </select>
+    <input  id="busqueda" name="busqueda"  type="text" placeholder="Escriba">
+  </div>
+  <br><br>
+  <button type="submit">Buscar</button>
+</form>
 
-    <!-- Campo de búsqueda dinámico -->
-    <label for="busqueda"></label>
-    <input type="text" id="busqueda" name="busqueda" placeholder="Escriba nombre">
-    <br><br>
-
-    <button type="submit">Buscar</button>
-  </form>
-
-
-
-
-
-
-
-    </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</body>
 </html>
+
