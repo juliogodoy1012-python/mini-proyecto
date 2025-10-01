@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 function jsonA_tabla(resultado) {
   const columns = Object.keys(resultado[0]);
 
-   let table = `
+  let table = `
     <table style="
       border-collapse: collapse;
       width: 100%;
@@ -26,6 +26,7 @@ function jsonA_tabla(resultado) {
       <thead>
         <tr style="background-color: #f2f2f2;">
   `;
+
   columns.forEach(column => {
     table += `<th style="border: 1px solid #ddd; padding: 8px; text-align: left;">${column}</th>`;
   });
@@ -35,15 +36,23 @@ function jsonA_tabla(resultado) {
   resultado.forEach(item => {
     table += "<tr>";
     columns.forEach(column => {
-      table += `<td style="border: 1px solid #ddd; padding: 8px;">${item[column] ?? ""}</td>`;
+      const valor = item[column] ?? "";
+      if (column === "nombre") {
+        // ✅ Agregamos enlace al perfil
+        table += `<td style="border: 1px solid #ddd; padding: 8px;">
+                    <a href="/perfil/${item.id}" style="color: #1565c0; text-decoration: none;">${valor}</a>
+                  </td>`;
+      } else {
+        table += `<td style="border: 1px solid #ddd; padding: 8px;">${valor}</td>`;
+      }
     });
     table += "</tr>";
   });
 
   table += "</tbody></table>";
-
   return table;
 }
+
 
 
 const conexion = mysql.createConnection(
@@ -112,6 +121,81 @@ app.get("/usuarios", (req, res) => {
     });
   });
 });
+
+
+app.get("/perfil/:id", (req, res) => {
+  const id = req.params.id;
+
+  const query = "SELECT nombre, dpi, correo, edad, altura, foto FROM usuarios WHERE id = ?";
+  conexion.query(query, [id], (err, resultados) => {
+    if (err) {
+      console.error("Error al buscar el perfil:", err.message);
+      return res.status(500).send("Error al buscar el perfil del usuario.");
+    }
+
+    if (resultados.length === 0) {
+      return res.status(404).send("<h2>Usuario no encontrado</h2><a href='/usuarios'>← Volver</a>");
+    }
+
+    const usuario = resultados[0];
+    res.send(`
+      <html>
+      <head>
+        <title>Perfil de ${usuario.nombre}</title>
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+            background-color: #263c9cff;
+            text-align: center;
+            padding: 30px;
+          }
+          .card {
+            background-color: #fff;
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+          }
+          img {
+            max-width: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+          }
+          .info {
+            text-align: left;
+            margin-top: 10px;
+          }
+          .info p {
+            margin: 8px 0;
+          }
+          a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #1565c0;
+            font-weight: bold;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="card">
+          <img src="${usuario.foto ?? 'https://via.placeholder.com/150'}" alt="Foto de ${usuario.nombre}">
+          <h2>${usuario.nombre}</h2>
+          <div class="info">
+            <p><strong>DPI:</strong> ${usuario.dpi}</p>
+            <p><strong>Correo:</strong> ${usuario.correo}</p>
+            <p><strong>Edad:</strong> ${usuario.edad}</p>
+            <p><strong>Altura:</strong> ${usuario.altura} m</p>
+          </div>
+          <a href="/usuarios">← Volver al listado</a>
+        </div>
+      </body>
+      </html>
+    `);
+  });
+});
+
 
 
 
