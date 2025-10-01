@@ -4,31 +4,35 @@
   <meta charset="UTF-8">
   <title>Dev-Oradores</title>
   <link rel="stylesheet" href="estilo.css">
+
 </head>
 <body>
 
   <nav>
     <a href="index.html">Inicio</a>
     <a href="nuevoUsuario.html">Crear usuarios</a>
-    <a href="verUsuario.html">Usuarios</a>
+    <a href="usuarios">Usuarios</a>
   </nav>
 
   <h2 class="titulo">Ver</h2>
 
-<form id="formBusqueda" action="verUsuario.html" method="get">
+<form id="formBusqueda" action="/usuarios" method="get">
 
+ <form id="formBusqueda" action="/usuarios" method="get">
   <div class="grupo-busqueda">
-    <label for="tipoBusqueda">Buscar por</label>
-    <select id="tipoBusqueda" name="tipoBusqueda">
+    <label for="filtro">Buscar por</label>
+    <select id="filtro" name="filtro">
       <option value="nombre">Nombre</option>
-      <option value="email">Correo</option>
-      <option value="dni">DPI</option>
+      <option value="correo">Correo</option> 
+      <option value="dpi">DPI</option>
     </select>
-    <input  id="busqueda" name="busqueda"  type="text" placeholder="Escriba">
+    <input id="valor" name="valor" type="text" placeholder="Escriba">
   </div>
   <br><br>
   <button type="submit">Buscar</button>
 </form>
+
+  {{TABLAFINAL}}
 
 </body>
 </html>
