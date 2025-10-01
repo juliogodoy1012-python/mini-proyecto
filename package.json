@@ -1,7 +1,7 @@
 {
   "name": "mini-proyecto",
   "version": "1.0.0",
-  "type":"module",
+  "type": "module",
   "description": "creacion de servidor",
   "main": "server.js",
   "scripts": {
@@ -25,6 +25,7 @@
   "homepage": "https://github.com/juliogodoy1012-python/mini-proyecto#readme",
   "dependencies": {
     "express": "^5.1.0",
+    "mysql2": "^3.15.1",
     "nodemon": "^3.1.10"
   }
 }
