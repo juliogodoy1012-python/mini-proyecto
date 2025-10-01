@@ -37,6 +37,8 @@ app.get("/", (req, res) => {
 }
 )
 
+
+
 app.get("/usuarios", (req, res) => {
     const query = "SELECT * FROM usuarios"
     conexion.query(query, (err, resultado) => {
