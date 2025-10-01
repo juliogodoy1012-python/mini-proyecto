@@ -1,0 +1,71 @@
+/* ======== Estilos generales ======== */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+nav {
+  background-color: #007BFF;
+  padding: 10px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ======== Título general ======== */
+.titulo {
+  text-align: center;
+  color: #333;
+  margin: 20px 0;
+}
+
+/* ======== Formularios (comunes) ======== */
+form {
+  max-width: 500px;
+  margin: 20px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* ======== Botones ======== */
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button[type="submit"] {
+  background-color: #007BFF;
+  color: white;
+}
+
+button[type="reset"] {
+  background-color: #ccc;
+  color: #333;
+}
