@@ -11,7 +11,7 @@ const conexion = mysql.createConnection(
         host: "localhost",
         user: "root",
         password: "root1234",
-        database: "aprendiendo_sql"
+        database: "aprendiendo_sql2"
     }
 )
 
@@ -22,9 +22,14 @@ conexion.connect( (err) => {
         console.log("Conexion exitosa a mysql")
 } )
 
-app.get("/", (req, res) => {
+app.get("/server", (req, res) => {
     res.send("Servidor funcionando correctamente")
 })
+
+app.get("/", (req, res))=>{
+    res.sendFile(path.join(__dirname, 'public', 'index.html'))
+}
+
 
 app.get("/usuarios", (req, res) => {
     const query = "SELECT * FROM usuarios"
