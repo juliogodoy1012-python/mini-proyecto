@@ -3,7 +3,10 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
+  background-image:url(https://images.pexels.com/photos/335887/pexels-photo-335887.jpeg?_gl=1*9xgm1l*_ga*MzIxNTI5OTMyLjE3NTY5MzU3MDk.*_ga_8JE65Q40S6*czE3NTk0NDIxMjckbzUkZzEkdDE3NTk0NDIyMDAkajUxJGwwJGgw);
+  background-size :cover;
+  object-fit: cover;
 }
 
 nav {
@@ -19,12 +22,20 @@ nav a {
   font-weight: bold;
 }
 
+.img_fondo{
+  width: 400px;
+  height: 220px;
+  object-fit: cover;
+  padding-left: 48px;
+}
+
 /* ======== Título general ======== */
 .titulo {
   text-align: center;
   color: #333;
   margin: 20px 0;
 }
+
 
 /* ======== Formularios (comunes) ======== */
 form {
@@ -85,8 +96,6 @@ button[type="reset"] {
 }
 
 
-
-
 .table-container {
   max-width: 90%;
   margin: 30px auto;
@@ -132,4 +141,74 @@ table th:first-child {
 
 table th:last-child {
   border-top-right-radius: 12px;
+}
+
+
+
+#imagenes_sitio {
+  margin: 50px auto;
+  max-width: 90%;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo negro semitransparente */
+  border-radius: 12px;
+  backdrop-filter: blur(6px); /* Difumina el fondo detrás del contenedor */
+  -webkit-backdrop-filter: blur(6px); /* Compatibilidad con Safari */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Sombra moderna */
+}
+
+
+
+
+/* Efecto al pasar el mouse */
+.img_fondo:hover {
+  transform: scale(1.05); /* Efecto de "zoom" */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+  .img_fondo {
+    width: 140px;
+    height: 140px;
+  }
+
+  #imagenes_sitio {
+    gap: 20px;
+  }
+}
+
+.descripcion,
+.footer {
+  margin: 50px auto;
+  max-width: 90%;
+  color: #f1f1f1;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.6); /* Fondo negro semitransparente */
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Sombra */
+  backdrop-filter: blur(4px); /* Difumina el fondo detrás del texto */
+  -webkit-backdrop-filter: blur(4px); 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+}
+
+.descripcion h2,
+.footer h3,
+.footer p {
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8); /* Sombra en el texto para mejor contraste */
+}
+.titulo {
+  text-align: center;
+  color: #ffffff;
+  font-size: 2.5rem;
+  margin-top: 30px;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

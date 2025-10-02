@@ -38,7 +38,6 @@ function jsonA_tabla(resultado) {
     columns.forEach(column => {
       const valor = item[column] ?? "";
       if (column === "nombre") {
-        // ✅ Agregamos enlace al perfil
         table += `<td style="border: 1px solid #ddd; padding: 8px;">
                     <a href="/perfil/${item.id}" style="color: #1565c0; text-decoration: none;">${valor}</a>
                   </td>`;
@@ -145,7 +144,8 @@ app.get("/perfil/:id", (req, res) => {
         <style>
           body {
             font-family: Arial, sans-serif;
-            background-color: #263c9cff;
+            background-image:url(https://images.pexels.com/photos/335887/pexels-photo-335887.jpeg?_gl=1*9xgm1l*_ga*MzIxNTI5OTMyLjE3NTY5MzU3MDk.*_ga_8JE65Q40S6*czE3NTk0NDIxMjckbzUkZzEkdDE3NTk0NDIyMDAkajUxJGwwJGgw);
+            background-size :cover;
             text-align: center;
             padding: 30px;
           }
@@ -218,7 +218,8 @@ app.post("/crearUsuario", (req, res) => {
     <style>
       body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #11467e;
+        background-image:url(https://images.pexels.com/photos/335887/pexels-photo-335887.jpeg?_gl=1*9xgm1l*_ga*MzIxNTI5OTMyLjE3NTY5MzU3MDk.*_ga_8JE65Q40S6*czE3NTk0NDIxMjckbzUkZzEkdDE3NTk0NDIyMDAkajUxJGwwJGgw);
+        background-size :cover;
         text-align: center;
         padding: 50px;
       }
