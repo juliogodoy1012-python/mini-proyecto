@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import express from "express";
 import mysql from "mysql2";
 import path from 'path';
@@ -6,16 +5,11 @@ import { fileURLToPath } from "url";
 import { dirname } from "path";
 import fs from "fs";
 
-=======
-const express = require("express")
-const mysql = require("mysql2")
->>>>>>> f27ad69e765ecd6fa0620759a47bc0ce196d76af
 
 const app = express()
 const port = 3500
 
 app.use(express.json())
-<<<<<<< HEAD
 app.use(express.static(path.join('public')));
 app.use(express.urlencoded({ extended: true }));
 
@@ -59,31 +53,21 @@ function jsonA_tabla(resultado) {
 }
 
 
-=======
->>>>>>> f27ad69e765ecd6fa0620759a47bc0ce196d76af
 
 const conexion = mysql.createConnection(
     {
         host: "localhost",
         user: "root",
         password: "root1234",
-<<<<<<< HEAD
-        database: "aprendiendo_sql2"
+        database: "aprendiendo_sql"
     }
 )
 
 conexion.connect( (err) => {
-=======
-        database: "aprendiendo_sql"
-    }
-)
-conexion.connect((err) => {
->>>>>>> f27ad69e765ecd6fa0620759a47bc0ce196d76af
     if(err)
         console.log("Error al conectar con la base de datos", err.message)
     else
         console.log("Conexion exitosa a mysql")
-<<<<<<< HEAD
 } )
 
 app.get("/local_serverUP", (req, res) => {
@@ -301,28 +285,3 @@ app.listen( port, () => {
     console.log(`server corriendo en http://localhost:${port}`)
 }
 )
-=======
-})
-app.get("/", (req, res) => {
-    res.send("Servidor funcionando correctamente")
-})
-
-app.post("/usuarios", (req, res) => {
-    const {nombre, edad, altura, correo, empresa_id} = req.body
-    const query = "INSERT INTO usuarios (nombre, edad, altura, correo, empresa_id) VALUES (?,?,?,?,?)"
-
-    conexion.query(query, [nombre, edad, altura, correo, empresa_id], (err, resultado) => {
-        if(err)
-            res.status(500).send("Error al obtener los usuarios")
-        else
-            res.json(resultado)
-    })
-})
-
-app.listen(port, () => {
-    console.log(`Servidor corriendo en http://localhost:${port}`);
-});
-
-
-
->>>>>>> f27ad69e765ecd6fa0620759a47bc0ce196d76af
