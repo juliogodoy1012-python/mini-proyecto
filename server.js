@@ -83,7 +83,7 @@ app.get("/", (req, res) => {
 app.get("/usuarios", (req, res) => {
   const { filtro, valor } = req.query;
 
-  let query = "SELECT id, nombre, dpi, correo FROM usuarios";
+  let query = "SELECT id, nombre, dpi, correo, empresa_id FROM usuarios";
   let params = [];
 
   if (filtro && valor) {
@@ -125,7 +125,7 @@ app.get("/usuarios", (req, res) => {
 app.get("/perfil/:id", (req, res) => {
   const id = req.params.id;
 
-  const query = "SELECT nombre, dpi, correo, edad, altura, foto FROM usuarios WHERE id = ?";
+  const query = "SELECT nombre, empresa_id, dpi, correo, edad, altura, foto FROM usuarios WHERE id = ?";
   conexion.query(query, [id], (err, resultados) => {
     if (err) {
       console.error("Error al buscar el perfil:", err.message);
@@ -200,10 +200,10 @@ app.get("/perfil/:id", (req, res) => {
 
 
 app.post("/crearUsuario", (req, res) => {
-    const {nombre, dpi, altura, edad, correo} = req.body
-    const query = "INSERT INTO usuarios (nombre, dpi, altura, edad, correo) VALUES (?,?,?,?,?)"
+    const {nombre, dpi, altura, edad, correo, empresa_id} = req.body
+    const query = "INSERT INTO usuarios (nombre, dpi, altura, edad, correo, empresa_id) VALUES (?,?,?,?,?,?)"
 
-    conexion.query(query, [nombre, dpi ,altura, edad, correo], (err, resultado) => {
+    conexion.query(query, [nombre, dpi ,altura, edad, correo, empresa_id], (err, resultado) => {
         if (err){
             console.log("Error al insertar:", err.message);
             res.status(500).send("Error al insertar los datos del usuario");
