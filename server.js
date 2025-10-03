@@ -125,7 +125,7 @@ app.get("/usuarios", (req, res) => {
 app.get("/perfil/:id", (req, res) => {
   const id = req.params.id;
 
-  const query = "SELECT nombre, empresa_id, dpi, correo, edad, altura, foto FROM usuarios WHERE id = ?";
+  const query = "SELECT empresa.nombre as EMPRESA, usuarios.nombre, usuarios.empresa_id, dpi, correo, edad, altura, foto FROM usuarios join empresa on usuarios.empresa_id=empresa.empresa_id WHERE id = ?";
   conexion.query(query, [id], (err, resultados) => {
     if (err) {
       console.error("Error al buscar el perfil:", err.message);
@@ -188,6 +188,7 @@ app.get("/perfil/:id", (req, res) => {
             <p><strong>Edad:</strong> ${usuario.edad}</p>
             <p><strong>Altura:</strong> ${usuario.altura} m</p>
             <p><strong>Empresa_id:</strong> ${usuario.empresa_id}</p>
+            <p><strong>Empresa:</strong> ${usuario.EMPRESA}</p>
           </div>
           <a href="/usuarios">← Volver al listado</a>
         </div>
