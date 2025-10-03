@@ -59,7 +59,7 @@ const conexion = mysql.createConnection(
         host: "localhost",
         user: "root",
         password: "root1234",
-        database: "aprendiendo_sql"
+        database: "aprendiendo_sql2"
     }
 )
 
