@@ -187,6 +187,7 @@ app.get("/perfil/:id", (req, res) => {
             <p><strong>Correo:</strong> ${usuario.correo}</p>
             <p><strong>Edad:</strong> ${usuario.edad}</p>
             <p><strong>Altura:</strong> ${usuario.altura} m</p>
+            <p><strong>Empresa_id:</strong> ${usuario.empresa_id}</p>
           </div>
           <a href="/usuarios">← Volver al listado</a>
         </div>
